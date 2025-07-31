@@ -199,6 +199,7 @@ const PageComponent = ({
       body: JSON.stringify(requestData)
     });
     const result = await response.json();
+    console.log("dong getLatestList result:",result)
     setCountRefresh(countRefresh + 1);
     setResultInfoList(result);
   }

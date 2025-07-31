@@ -3,6 +3,12 @@ import {apiKey, baseUrl} from "~/configs/openaiConfig";
 export const model = 'openai/gpt-4o';
 export const temperature = 0
 export const getLanguage = async (content: string) => {
+  // Check if API key is configured
+  if (!apiKey) {
+    console.warn('OPENAI_API_KEY is not configured, defaulting to English');
+    return 'en';
+  }
+
   let body = {
     messages: [
       {
@@ -22,20 +28,39 @@ export const getLanguage = async (content: string) => {
     temperature: temperature,
     stream: false
   }
-  let languageResult = await fetch(`${baseUrl}/v1/chat/completions`, {
-    method: 'POST',
-    body: JSON.stringify(body),
-    headers: {
-      'content-type': 'application/json',
-      authorization: `Bearer ${apiKey}`
-    }
-  })
-    .then(v => v.json()).catch(err => console.log(err));
 
-  // console.log('content-=->', content);
-  // console.log('languageResult-=->', languageResult);
-  // console.log('languageResult?.choices[0]?.message-=->', languageResult?.choices[0]?.message);
-  const lang = languageResult?.choices[0]?.message?.content.substring(0, 2) || 'en';
-  // console.log('lang->', lang);
-  return lang;
+  try {
+    let languageResult = await fetch(`${baseUrl}/v1/chat/completions`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${apiKey}`
+      }
+    });
+
+    if (!languageResult.ok) {
+      console.error('API request failed:', languageResult.status, languageResult.statusText);
+      return 'en';
+    }
+
+    const data = await languageResult.json();
+    
+    // console.log('content-=->', content);
+    // console.log('languageResult-=->', data);
+    // console.log('languageResult?.choices[0]?.message-=->', data?.choices?.[0]?.message);
+    
+    // Check if the response has the expected structure
+    if (!data?.choices?.[0]?.message?.content) {
+      console.error('Unexpected API response structure:', data);
+      return 'en';
+    }
+
+    const lang = data.choices[0].message.content.substring(0, 2) || 'en';
+    // console.log('lang->', lang);
+    return lang;
+  } catch (err) {
+    console.error('Error in getLanguage:', err);
+    return 'en';
+  }
 }
