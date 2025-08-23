@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA AI - Free Magical GTA Art Image Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black text-white">
+    <div class="min-h-screen bg-black text-white overflow-hidden">
+        <!-- Header -->
+        <header class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
+            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <a href="/" class="flex items-center space-x-3">
+                        <!-- Logo - Replace with actual logo -->
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">G</span>
+                        </div>
+                        <span class="text-2xl font-bold text-white">GTA AI</span>
+                    </a>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button class="flex items-center space-x-2 text-gray-300 hover:text-white">
+                            <!-- Language icon placeholder -->
+                            <div class="w-5 h-5 bg-gray-600 rounded"></div>
+                            <span class="text-sm">Switch language</span>
+                        </button>
+                        <button class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
+                            <!-- Menu icon placeholder -->
+                            <div class="w-4 h-4 bg-gray-400 rounded"></div>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="pt-16">
+            <!-- Hero Section -->
+            <section class="relative min-h-screen flex items-center justify-center">
+                <!-- Background Image Placeholder - Replace with actual background -->
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-black to-pink-900/50"></div>
+                
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                    <div class="text-center">
+                        <div class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text font-semibold text-sm mb-4">
+                            New Era of AI Style Transfer
+                        </div>
+                        
+                        <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+                            <span class="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA AI</span>
+                            <br />
+                            <span class="text-white">Art Generator</span>
+                        </h1>
+                        
+                        <div class="max-w-2xl mx-auto mb-8">
+                            <p class="text-xl text-gray-300 mb-4">Transform your photos into Grand Theft Auto style with AI</p>
+                            <p class="text-lg text-gray-400 mb-8">Experience the 80s Miami neon aesthetic</p>
+                            
+                            <div class="text-sm text-gray-400 leading-relaxed space-y-4">
+                                <p>
+                                    Discover the power of GTA AI technology that brings your ordinary photos to life with stunning Grand Theft Auto aesthetics. 
+                                    Our advanced artificial intelligence understands the iconic visual language of the GTA universe, from the neon-soaked streets to the vibrant character designs.
+                                </p>
+                                <p>
+                                    Create professional-quality GTA Art in seconds with our state-of-the-art neural networks. Whether you're transforming portraits into iconic characters 
+                                    or landscapes into cinematic scenes, GTA AI delivers exceptional results that capture the essence of the beloved game series.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Statistics -->
+                        <div class="flex justify-center items-center space-x-8 mb-12">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-white">25,000<span class="text-purple-400">+</span></div>
+                                <div class="text-sm text-gray-400">Users</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-white">500,000<span class="text-purple-400">+</span></div>
+                                <div class="text-sm text-gray-400">Images</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-white">12<span class="text-purple-400">+</span></div>
+                                <div class="text-sm text-gray-400">AI Models</div>
+                            </div>
+                        </div>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="#converter" class="inline-block">
+                                <button class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+                                    Start Converting
+                                </button>
+                            </a>
+                            <a href="#gallery" class="inline-block">
+                                <button class="border border-gray-600 hover:border-gray-400 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+                                    Browse Gallery
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Converter Section -->
+            <section id="converter" class="relative py-20">
+                <!-- Background Image Placeholder -->
+                <div class="absolute inset-0 bg-gradient-to-br from-black/80 to-purple-900/20"></div>
+                
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <!-- Left Column - Info -->
+                        <div>
+                            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                                <span class="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA AI Style Converter</span>
+                            </h2>
+                            <p class="text-xl text-gray-300 mb-8">Upload your photo, choose a style, and let AI transform it into GTA style</p>
+                            
+                            <!-- How it works -->
+                            <div class="mb-12">
+                                <h3 class="text-2xl font-bold text-white mb-6">How GTA AI Works</h3>
+                                <div class="space-y-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                                        <p class="text-gray-300">Upload your photo and watch as GTA AI analyzes every detail</p>
+                                    </div>
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                                        <p class="text-gray-300">Our advanced algorithms apply authentic GTA Art styling</p>
+                                    </div>
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                                        <p class="text-gray-300">Download your transformed masterpiece in high resolution</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column - Converter -->
+                        <div class="space-y-8">
+                            <!-- Upload Area -->
+                            <div class="bg-gray-900/50 border-2 border-dashed border-gray-600 rounded-2xl p-8 text-center hover:border-purple-500 transition-colors cursor-pointer">
+                                <button class="mb-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg text-white font-medium">
+                                    Choose File
+                                </button>
+                                <div class="space-y-2">
+                                    <!-- Upload icon placeholder -->
+                                    <div class="w-16 h-16 bg-gray-700 rounded-lg mx-auto mb-4"></div>
+                                    <p class="text-gray-300">Drag and drop your image here or click to upload</p>
+                                    <p class="text-sm text-gray-500">Supports JPG, PNG, WebP formats, max 10MB</p>
+                                </div>
+                                <button class="mt-4 bg-gray-800 hover:bg-gray-700 px-6 py-2 rounded-lg text-white">
+                                    Select File
+                                </button>
+                            </div>
+                            
+                            <!-- Style Selection -->
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-4">Choose Your GTA Style</h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <button class="p-4 rounded-xl border-2 border-purple-500 bg-purple-500/20 transition-all">
+                                        <!-- Style preview image placeholder -->
+                                        <div class="w-full h-24 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg mb-3"></div>
+                                        <h4 class="font-semibold text-white mb-1">Original Art</h4>
+                                        <p class="text-sm text-gray-400 mb-3">Classic GTA original art style</p>
+                                        <div class="flex space-x-1">
+                                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Character</span>
+                                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Vehicle</span>
+                                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Scene</span>
+                                        </div>
+                                    </button>
+                                    
+                                    <button class="p-4 rounded-xl border-2 border-gray-600 bg-gray-900/50 hover:border-gray-500 transition-all">
+                                        <!-- Style preview image placeholder -->
+                                        <div class="w-full h-24 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-lg mb-3"></div>
+                                        <h4 class="font-semibold text-white mb-1">Neon Style</h4>
+                                        <p class="text-sm text-gray-400 mb-3">Vibrant neon-lit Miami aesthetic</p>
+                                        <div class="flex space-x-1">
+                                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Neon Lights</span>
+                                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Cyberpunk</span>
+                                            <span class="px-2 py-1 bg-gray-800 rounded text-xs">Night City</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Advanced Options -->
+                            <button class="w-full flex items-center justify-between p-4 bg-gray-900/50 border border-gray-600 rounded-lg hover:bg-gray-800/50">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-5 h-5 bg-gray-600 rounded"></div>
+                                    <span>Advanced Options</span>
+                                </div>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            
+                            <!-- Convert Button -->
+                            <button class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-4 rounded-full font-semibold text-lg">
+                                Please log in first
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Result Area -->
+                    <div class="mt-16 bg-gray-900/50 border border-gray-600 rounded-2xl p-8">
+                        <div class="text-center">
+                            <!-- Result icon placeholder -->
+                            <div class="w-24 h-24 bg-gray-700 rounded-full mx-auto mb-6"></div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Conversion results will be displayed here</h3>
+                            <p class="text-gray-400 mb-8">Upload your image, choose your favorite GTA style, then click the convert button. AI will create stunning GTA-style images for you.</p>
+                            
+                            <!-- Example comparison -->
+                            <div class="flex justify-center items-center space-x-8">
+                                <div class="text-center">
+                                    <!-- Example original image placeholder -->
+                                    <div class="w-32 h-32 bg-gray-700 rounded-lg mb-2"></div>
+                                    <p class="text-sm text-gray-400">Original</p>
+                                </div>
+                                <div class="text-center">
+                                    <!-- Example result image placeholder -->
+                                    <div class="w-32 h-32 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg mb-2"></div>
+                                    <p class="text-sm text-gray-400">GTA Style</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallery" class="py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                            <span class="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA Art Gallery</span>
+                        </h2>
+                        <p class="text-xl text-gray-300 mb-8">Explore stunning GTA style artworks created by AI, each one is a unique artistic expression</p>
+                        
+                        <div class="max-w-4xl mx-auto text-sm text-gray-400 leading-relaxed space-y-4">
+                            <p>
+                                Discover the incredible potential of GTA AI through our curated gallery of transformations. Each piece demonstrates the sophisticated understanding 
+                                our AI has of Grand Theft Auto's distinctive visual style, from character portraits to scenic landscapes.
+                            </p>
+                            <p>
+                                Get inspired by the endless possibilities of GTA Art creation and see how other artists have used our platform to bring their visions to life.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Gallery Item -->
+                    <div class="relative bg-gray-900/50 border border-gray-600 rounded-2xl overflow-hidden">
+                        <!-- Main gallery image placeholder -->
+                        <div class="aspect-video bg-gradient-to-br from-pink-600 via-purple-600 to-cyan-600 relative">
+                            <div class="absolute inset-0 bg-black/30"></div>
+                        </div>
+                        
+                        <div class="absolute inset-0 flex items-end">
+                            <div class="p-8 text-white">
+                                <h3 class="text-3xl font-bold mb-2">
+                                    <span class="bg-gradient-to-r from-pink-400 to-cyan-400 text-transparent bg-clip-text">Welcome to Vice City</span>
+                                </h3>
+                                <h2 class="text-4xl font-bold text-white mb-4">The Neon Paradise</h2>
+                                <p class="text-gray-200 max-w-2xl mb-6">
+                                    Step into the vibrant world of Vice City, where neon lights illuminate the night and every corner tells a story of ambition, 
+                                    power, and the pursuit of the American Dream in the 1980s.
+                                </p>
+                                
+                                <div class="flex space-x-4 mb-6">
+                                    <button class="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/30">
+                                        <div class="w-4 h-4 bg-white/80 rounded"></div>
+                                        <span>View Gallery</span>
+                                    </button>
+                                    <button class="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/30">
+                                        <div class="w-4 h-4 bg-white/80 rounded"></div>
+                                        <span>Download</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gallery Navigation -->
+                        <div class="absolute right-4 bottom-4 flex items-center space-x-2">
+                            <button class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                <div class="w-4 h-2 bg-white/80 rounded"></div>
+                            </button>
+                            <div class="flex space-x-1">
+                                <button class="w-2 h-2 rounded-full bg-white"></button>
+                                <button class="w-2 h-2 rounded-full bg-white/40"></button>
+                                <button class="w-2 h-2 rounded-full bg-white/40"></button>
+                                <button class="w-2 h-2 rounded-full bg-white/40"></button>
+                                <button class="w-2 h-2 rounded-full bg-white/40"></button>
+                                <button class="w-2 h-2 rounded-full bg-white/40"></button>
+                            </div>
+                            <button class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                <div class="w-4 h-2 bg-white/80 rounded"></div>
+                            </button>
+                        </div>
+                        
+                        <!-- Share Button -->
+                        <button class="absolute top-4 right-4 flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-3 py-2 rounded-lg">
+                            <div class="w-4 h-4 bg-white/80 rounded"></div>
+                            <span>Share</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Continue with other sections in the same pattern... -->
+            
+            <!-- Footer -->
+            <footer class="bg-black/50 border-t border-gray-800 py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                        <!-- Brand Column -->
+                        <div>
+                            <div class="flex items-center space-x-3 mb-4">
+                                <!-- Logo placeholder -->
+                                <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                                    <span class="text-white font-bold text-xl">G</span>
+                                </div>
+                                <span class="text-2xl font-bold text-white">GTA AI</span>
+                            </div>
+                            <p class="text-gray-400 mb-6 max-w-sm">
+                                Transform your ideas into stunning GTA art with cutting-edge AI technology. Create professional-quality images in seconds.
+                            </p>
+                            
+                            <!-- Social Links -->
+                            <div class="flex space-x-4">
+                                <a href="https://twitter.com/gtaai_official" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700">
+                                    <div class="w-5 h-5 bg-gray-400 rounded"></div>
+                                </a>
+                                <a href="https://instagram.com/gtaai_official" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700">
+                                    <div class="w-5 h-5 bg-gray-400 rounded"></div>
+                                </a>
+                                <a href="https://github.com/gtaai" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700">
+                                    <div class="w-5 h-5 bg-gray-400 rounded"></div>
+                                </a>
+                                <a href="mailto:support@gtaai.net" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700">
+                                    <div class="w-5 h-5 bg-gray-400 rounded"></div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Column -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-4">Product</h3>
+                            <ul class="space-y-2">
+                                <li><a href="/#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                                <li><a href="/gallery" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
+                                <li><a href="/pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                                <li><a href="/api" class="text-gray-400 hover:text-white transition-colors">API</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Resources Column -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-4">Resources</h3>
+                            <ul class="space-y-2">
+                                <li><a href="/docs" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                                <li><a href="/docs/styles" class="text-gray-400 hover:text-white transition-colors">Style Guide</a></li>
+                                <li><a href="/docs/tutorials" class="text-gray-400 hover:text-white transition-colors">Tutorials</a></li>
+                                <li><a href="/blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Community Column -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-4">Community</h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a href="https://discord.gg/gtaai" class="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                                        <span>Discord</span>
+                                        <div class="w-3 h-3 bg-gray-400 rounded"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/gtaai_official" class="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                                        <span>Twitter</span>
+                                        <div class="w-3 h-3 bg-gray-400 rounded"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/gtaai" class="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                                        <span>GitHub</span>
+                                        <div class="w-3 h-3 bg-gray-400 rounded"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:support@gtaai.net" class="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                                        <span>Support</span>
+                                        <div class="w-3 h-3 bg-gray-400 rounded"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Disclaimer -->
+                    <div class="border-t border-gray-800 pt-8">
+                        <p class="text-gray-500 text-center mb-4">
+                            Inspired by the iconic Grand Theft Auto series. This is a fan project and not affiliated with Rockstar Games or Take-Two Interactive.
+                        </p>
+                        
+                        <div class="flex flex-col md:flex-row justify-between items-center">
+                            <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                                <span class="text-gray-400">© 2025 GTA AI. All rights reserved.</span>
+                                <a href="https://ravensaas.io" class="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                                    <span class="text-sm">Built with RavenSaaS</span>
+                                    <div class="w-4 h-4 bg-gray-400 rounded"></div>
+                                </a>
+                            </div>
+                            
+                            <div class="flex space-x-6">
+                                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                                <a href="/cookies" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+                                <a href="/gdpr" class="text-gray-400 hover:text-white transition-colors">GDPR</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
