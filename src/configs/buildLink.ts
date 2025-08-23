@@ -20,10 +20,14 @@ export const getCompressionImageLink = (url) => {
 
 export const getArrayUrlResult = (origin) => {
   if (origin) {
-    const jsonResult = JSON.parse(origin);
-    if (jsonResult.length > 0) {
-      return jsonResult;
-    }
+      try {
+          const jsonResult = JSON.parse(origin);
+          if (jsonResult.length > 0) {
+              return jsonResult;
+          }
+      } catch (e) {
+          console.error(e);
+      }
   }
   return []
 }
