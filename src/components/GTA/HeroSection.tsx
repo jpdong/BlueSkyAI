@@ -1,4 +1,7 @@
+
 import React from 'react';
+import { PulsatingButton } from "../magicui/pulsating-button";
+import { AuroraText } from "../magicui/aurora-text";
 
 const HeroSection = () => {
   return (
@@ -13,11 +16,12 @@ const HeroSection = () => {
           </div>
           
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA AI</span>
+            {/* <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA AI</span> */}
+          <AuroraText>GTA AI </AuroraText>
             <br />
             <span className="text-white">Art Generator</span>
           </h1>
-          
+  
           <div className="max-w-2xl mx-auto mb-8">
             <p className="text-xl text-gray-300 mb-4">Transform your photos into Grand Theft Auto style with AI</p>
             <p className="text-lg text-gray-400 mb-8">Experience the 80s Miami neon aesthetic</p>
@@ -53,9 +57,10 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#converter" className="inline-block">
-              <button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+              {/* <button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
                 Start Converting
-              </button>
+              </button> */}
+              <PulsatingButton className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"> Start Converting</PulsatingButton>
             </a>
             <a href="#gallery" className="inline-block">
               <button className="border border-gray-600 hover:border-gray-400 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">

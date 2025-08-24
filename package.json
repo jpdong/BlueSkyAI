@@ -15,9 +15,13 @@
     "@tailwindcss/typography": "^0.5.10",
     "ahooks": "^3.7.10",
     "aws-sdk": "^2.1572.0",
-    "clsx": "^2.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cobe": "^0.6.4",
     "date-fns": "^3.3.1",
     "google-auth-library": "^9.6.3",
+    "lucide-react": "^0.541.0",
+    "motion": "^12.23.12",
     "next": "14.2.25",
     "next-auth": "^4.24.6",
     "next-intl": "^3.26.0",
@@ -28,7 +32,10 @@
     "react-markdown": "^9.0.1",
     "replicate": "^0.27.1",
     "stripe": "^14.19.0",
-    "uuid": "^9.0.1"
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
+    "uuid": "^9.0.1",
+    "magic-ui-react": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
