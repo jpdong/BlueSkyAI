@@ -6,6 +6,7 @@ import {
   getQuestionText
 } from "~/i18n/languageText";
 import { getLatestPublicResultList } from "~/servers/works";
+import GTAHomepage from "~/components/GTAHomepage";
 
 export const revalidate = 120;
 export default async function IndexPage({ params: { locale = '' }, searchParams: searchParams }) {
@@ -18,13 +19,14 @@ export default async function IndexPage({ params: { locale = '' }, searchParams:
   const resultInfoListInit = await getLatestPublicResultList(locale, 1);
 
   return (
-    <PageComponent
+    /*<PageComponent
       locale={locale}
       indexText={indexText}
       questionText={questionText}
       resultInfoListInit={resultInfoListInit}
       searchParams={searchParams}
-    />
+    />*/
+      <GTAHomepage/>
   )
 
 

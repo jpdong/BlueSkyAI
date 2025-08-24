@@ -9,7 +9,7 @@ interface GTAHomepagePageComponentProps {
 export default function GTAHomepagePageComponent({ locale }: GTAHomepagePageComponentProps) {
   return (
     <div className="gta-homepage-container">
-      <GTAHomepage />
+      <GTAHomepage locale={locale} />
     </div>
   );
 }
