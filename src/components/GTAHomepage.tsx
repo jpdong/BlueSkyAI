@@ -15,6 +15,7 @@ import GeneratingModal from './GeneratingModal';
 import LoginModal from './LoginModal';
 import LogoutModal from './LogoutModal';
 import PricingModal from './PricingModal';
+import GTAHeroSection from "~/components/GTAHeroSection";
 
 const GTAHomepage = ({ locale = 'en' }) => {
   const {
@@ -22,7 +23,7 @@ const GTAHomepage = ({ locale = 'en' }) => {
     authText
   } = useCommonContext();
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen text-white overflow-hidden relative gta-homepage-container">
       {/* Modals */}
       <LoadingModal loadingText={commonText?.loadingText || 'Loading...'} />
       <GeneratingModal generatingText={commonText?.generateText || 'Generating...'} />
@@ -40,10 +41,10 @@ const GTAHomepage = ({ locale = 'en' }) => {
       />
       <PricingModal locale={locale} page="" />
 
-      <Header locale={locale} />
+      {/*<Header locale={locale} />*/}
       
-      <main className="pt-16">
-        <HeroSection />
+      <main>
+        <GTAHeroSection />
         <ConverterSection />
         <GallerySection />
         <StatisticsSection />

@@ -6,8 +6,6 @@ import { AuroraText } from "../magicui/aurora-text";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center">
-      <div className="absolute inset-0 bg-linear-to-br from-purple-900/50 via-black to-pink-900/50"></div>
-      <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-20"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
@@ -25,17 +23,6 @@ const HeroSection = () => {
           <div className="max-w-2xl mx-auto mb-8">
             <p className="text-xl text-gray-300 mb-4">Transform your photos into Grand Theft Auto style with AI</p>
             <p className="text-lg text-gray-400 mb-8">Experience the 80s Miami neon aesthetic</p>
-            
-            <div className="text-sm text-gray-400 leading-relaxed space-y-4">
-              <p>
-                Discover the power of GTA AI technology that brings your ordinary photos to life with stunning Grand Theft Auto aesthetics. 
-                Our advanced artificial intelligence understands the iconic visual language of the GTA universe, from the neon-soaked streets to the vibrant character designs.
-              </p>
-              <p>
-                Create professional-quality GTA Art in seconds with our state-of-the-art neural networks. Whether you're transforming portraits into iconic characters 
-                or landscapes into cinematic scenes, GTA AI delivers exceptional results that capture the essence of the beloved game series.
-              </p>
-            </div>
           </div>
           
           {/* Statistics */}

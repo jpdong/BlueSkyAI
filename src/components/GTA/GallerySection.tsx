@@ -2,8 +2,9 @@ import React from 'react';
 
 const GallerySection = () => {
   return (
-    <section id="gallery" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="gallery" className="relative py-20">
+      <div className="absolute inset-0 bg-black/10"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="bg-linear-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA Art Gallery</span>

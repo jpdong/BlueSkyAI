@@ -290,3 +290,40 @@
 .animate-pulse {
   animation: pulse var(--duration) ease-out infinite;
 }
+
+/* GTA Homepage 固定背景样式 */
+.gta-homepage-container {
+  background: linear-gradient(to bottom right, rgba(88, 28, 135, 0.5), rgba(0, 0, 0, 1), rgba(162, 28, 175, 0.5)),
+              url('/api/placeholder/1920/1080');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 移动端兼容性：禁用fixed背景 */
+@media (max-width: 768px) {
+  .gta-homepage-container {
+    background-attachment: scroll;
+  }
+  
+  /* 为移动端的每个section添加背景 */
+  .gta-homepage-container section {
+    position: relative;
+  }
+  
+  .gta-homepage-container section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(88, 28, 135, 0.5), rgba(0, 0, 0, 1), rgba(162, 28, 175, 0.5)),
+                url('/api/placeholder/1920/1080');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+}

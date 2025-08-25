@@ -3,8 +3,7 @@ import React from 'react';
 const StatisticsSection = () => {
   return (
     <section className="relative py-20">
-      <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-10"></div>
-      <div className="absolute inset-0 bg-linear-to-br from-black/80 to-purple-900/20"></div>
+      <div className="absolute inset-0 bg-black/20"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
