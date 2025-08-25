@@ -22,8 +22,8 @@ export const useSSETaskStatus = (taskId: string | null, options: UseSSETaskStatu
     onComplete,
     onError,
     timeout = 5 * 60 * 1000, // 5分钟超时
-    fallbackPollingDelay = 15 * 1000, // 15秒后开始轮询
-    pollingInterval = 30 * 1000, // 1分钟轮询间隔
+    fallbackPollingDelay = 10 * 1000, // 15秒后开始轮询
+    pollingInterval = 20 * 1000, // 1分钟轮询间隔
     maxPollingAttempts = 5, // 最多轮询5次
   } = options;
   

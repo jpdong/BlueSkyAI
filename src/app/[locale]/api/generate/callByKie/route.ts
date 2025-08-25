@@ -64,7 +64,7 @@ export const POST = async (req: Request) => {
       
       return Response.json({ error: 'No result image URL' }, { status: 400 });
     }
-
+    /*
     let imageContent;
     try {
       console.log("dong call by kie resultImageUrl:",resultImageUrl);
@@ -117,9 +117,9 @@ export const POST = async (req: Request) => {
       
       return Response.json({ error: 'Failed to upload image' }, { status: 500 });
     }
-
-    const finalImageUrl = `${storageURL}/${fileName}`;
-    //const finalImageUrl = originImageUrl;
+    */
+    //const finalImageUrl = `${storageURL}/${fileName}`;
+    const finalImageUrl = originImageUrl;
 
     const db = getDb();
     const results = await db.query('SELECT * FROM works WHERE task_id=$1', [taskId]);

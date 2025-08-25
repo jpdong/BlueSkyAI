@@ -8,7 +8,6 @@ import { useCommonContext } from '~/context/common-context';
 import { useSSETaskStatus } from '~/hooks/useSSETaskStatus';
 
 const ConverterSection = () => {
-  const [selectedStyle, setSelectedStyle] = useState('original');
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [convertedImage, setConvertedImage] = useState<string | null>(null);
@@ -39,8 +38,8 @@ const ConverterSection = () => {
   const { isConnecting, connectionError, isPolling, pollingAttempts } = useSSETaskStatus(currentTaskId, {
     onComplete: handleTaskComplete,
     onError: handleTaskError,
-    fallbackPollingDelay: 15 * 1000, // 15秒后开始轮询
-    pollingInterval: 30 * 1000, // 轮询间隔
+    fallbackPollingDelay: 10 * 1000, // 10秒后开始轮询
+    pollingInterval: 20 * 1000, // 轮询间隔
     maxPollingAttempts: 5, // 最多轮询5次
   });
 
@@ -107,7 +106,7 @@ const ConverterSection = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          textStr: `GTA style, ${selectedStyle} style`,
+          textStr: `GTA style`,
           inputImageUrl: uploadedImage,
           user_id: userData?.user_id || 'guest',
           is_public: true,

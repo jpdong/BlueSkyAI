@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 interface MockKieRequest {
   model: string;
   prompt: string;
-  input_image: string;
-  callback_url: string;
+  inputImage: string;
+  callBackUrl: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -13,9 +13,9 @@ export async function POST(request: NextRequest) {
     const body: MockKieRequest = await request.json();
     console.log('Mock KIE.AI request received:', body);
 
-    const { callback_url, input_image } = body;
+    const { callBackUrl, inputImage } = body;
     
-    if (!callback_url) {
+    if (!callBackUrl) {
       return Response.json({
         code: 400,
         msg: 'Missing callback_url',
@@ -47,14 +47,14 @@ export async function POST(request: NextRequest) {
           data: {
             taskId: taskId,
             info: {
-              originImageUrl: input_image,
-              resultImageUrl: input_image // 使用输入图片作为输出，节省成本
+              originImageUrl: inputImage,
+              resultImageUrl: inputImage // 使用输入图片作为输出，节省成本
             }
           }
         };
 
         // 调用callback URL
-        const callbackResponse = await fetch(callback_url, {
+        const callbackResponse = await fetch(callBackUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       return Response.json({ msg: "Login to continue.", status: 601 });
     }
 
-    /*const checkSubscribeStatus = await checkSubscribe(user_id);
+    const checkSubscribeStatus = await checkSubscribe(user_id);
     
     if (!is_public) {
       // 判断用户是否订阅状态，否则返回错误
@@ -38,10 +38,10 @@ export async function POST(req: Request) {
       if (!check && process.env.NEXT_PUBLIC_CHECK_AVAILABLE_TIME != "0") {
         return Response.json({ msg: "Pricing to continue.", status: 602 });
       }
-    }*/
+    }
 
     const checkSensitive = await checkSensitiveInputText(textStr);
-    /*if (!checkSensitive) {
+    if (!checkSensitive) {
       // 敏感词没通过，校验是否订阅
       if (!checkSubscribeStatus) {
         // 未订阅则返回付费再继续
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         // 订阅强制设置其为用户私有，不公开
         is_public = false;
       }
-    }*/
+    }
 
     const uid = uuidv4();
     const db = getDb();
@@ -104,7 +104,8 @@ export async function POST(req: Request) {
 }
 
 async function generateImage(prompt: string, inputImageUrl: string): Promise<string> {
-  const url = 'https://api.kie.ai/api/v1/flux/kontext/generate';
+  //const url = 'https://api.kie.ai/api/v1/flux/kontext/generate';
+  const url = 'http://localhost:3000/api/mock/kie-generate';
 
   // 测试环境使用模拟API，生产环境使用真实API
   /*const url = process.env.NODE_ENV === 'development' || process.env.USE_MOCK_KIE === 'true'
@@ -112,8 +113,9 @@ async function generateImage(prompt: string, inputImageUrl: string): Promise<str
     : 'https://api.kie.ai/api/v1/flux/kontext/generate';*/
   
   // 构建回调URL - 使用完整的域名
-  const callbackUrl = `${process.env.WEB_HOOK_URL}/api/generate/callByKie`;
-  
+  //const callbackUrl = `${process.env.WEB_HOOK_URL}/api/generate/callByKie`;
+  const callbackUrl = `http://localhost:3000/api/generate/callByKie`;
+
   const requestBody = {
     aspectRatio: "1:1", // 适合GTA风格的正方形
     outputFormat: "jpeg",
