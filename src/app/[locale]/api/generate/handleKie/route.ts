@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       return Response.json({ msg: "Login to continue.", status: 601 });
     }
 
-    const checkSubscribeStatus = await checkSubscribe(user_id);
+    /*const checkSubscribeStatus = await checkSubscribe(user_id);
     
     if (!is_public) {
       // 判断用户是否订阅状态，否则返回错误
@@ -38,10 +38,10 @@ export async function POST(req: Request) {
       if (!check && process.env.NEXT_PUBLIC_CHECK_AVAILABLE_TIME != "0") {
         return Response.json({ msg: "Pricing to continue.", status: 602 });
       }
-    }
+    }*/
 
     const checkSensitive = await checkSensitiveInputText(textStr);
-    if (!checkSensitive) {
+    /*if (!checkSensitive) {
       // 敏感词没通过，校验是否订阅
       if (!checkSubscribeStatus) {
         // 未订阅则返回付费再继续
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         // 订阅强制设置其为用户私有，不公开
         is_public = false;
       }
-    }
+    }*/
 
     const uid = uuidv4();
     const db = getDb();
@@ -74,7 +74,9 @@ export async function POST(req: Request) {
     // 调用KIE.AI API
     let taskId;
     try {
-      taskId = await generateImage(textStr, inputImageUrl, uid);
+      taskId = await generateImage(textStr, inputImageUrl);
+      // 将KIE.AI的taskId存储到数据库
+      await db.query('UPDATE works SET task_id=$1, updated_at=now() WHERE uid=$2', [taskId, uid]);
     } catch (generateError) {
       console.error('Generate image failed:', generateError);
       // 将任务状态设为失败
@@ -83,15 +85,16 @@ export async function POST(req: Request) {
     }
     
     // 需要登录，且需要支付时，才操作该项
-    if (process.env.NEXT_PUBLIC_CHECK_GOOGLE_LOGIN != "0" && process.env.NEXT_PUBLIC_CHECK_AVAILABLE_TIME != "0" && !checkSubscribeStatus) {
+    /*if (process.env.NEXT_PUBLIC_CHECK_GOOGLE_LOGIN != "0" && process.env.NEXT_PUBLIC_CHECK_AVAILABLE_TIME != "0" && !checkSubscribeStatus) {
       // 减少用户次数
       await countDownUserTimes(user_id);
-    }
+    }*/
 
     const resultInfo = {
       uid: uid,
       taskId: taskId,
     };
+    console.info('handleKie resultInfo:', resultInfo);
     return Response.json(resultInfo);
     
   } catch (error) {
@@ -100,11 +103,11 @@ export async function POST(req: Request) {
   }
 }
 
-async function generateImage(prompt: string, inputImageUrl: string, taskId: string): Promise<string> {
+async function generateImage(prompt: string, inputImageUrl: string): Promise<string> {
   const url = 'https://api.kie.ai/api/v1/flux/kontext/generate';
   
   // 构建回调URL - 使用完整的域名
-  const callbackUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/generate/callByKie`;
+  const callbackUrl = `${process.env.WEB_HOOK_URL}/api/generate/callByKie`;
   
   const requestBody = {
     aspectRatio: "1:1", // 适合GTA风格的正方形
@@ -115,7 +118,6 @@ async function generateImage(prompt: string, inputImageUrl: string, taskId: stri
     inputImage: inputImageUrl,
     prompt: `Transform this image into GTA (Grand Theft Auto) style artwork. ${prompt}. Apply vibrant colors, neon lighting effects, 80s Miami aesthetic, stylized character design, and cinematic composition typical of GTA art style.`,
     callBackUrl: callbackUrl,
-    taskId: taskId // 添加taskId以便回调时识别
   };
 
   const options = {
@@ -135,8 +137,8 @@ async function generateImage(prompt: string, inputImageUrl: string, taskId: stri
     if (!response.ok) {
       throw new Error(`KIE.AI API error: ${data.message || 'Unknown error'}`);
     }
-    
-    return data.taskId || taskId;
+    console.log('KIE.AI API response:', data.data.taskId);
+    return data.data.taskId;
   } catch (error) {
     console.error('KIE.AI API call failed:', error);
     throw error;

@@ -163,7 +163,7 @@ const ConverterSection = () => {
           setPollCount(0);
         } else {
           // 继续轮询，动态调整轮询间隔
-          const interval = pollCount < 10 ? 2000 : pollCount < 30 ? 3000 : 5000;
+          const interval = pollCount < 10 ? 10000 : pollCount < 30 ? 20000 : 60000;
           setTimeout(checkStatus, interval);
         }
       } catch (error) {

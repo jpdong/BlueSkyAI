@@ -2,6 +2,7 @@ import { R2, r2Bucket, storageURL } from "~/libs/R2";
 import { getDb } from "~/libs/db";
 import { countSticker } from "~/servers/keyValue";
 import { v4 as uuidv4 } from 'uuid';
+import {countDownUserTimes} from "~/servers/manageUserTimes";
 
 export const POST = async (req: Request) => {
   let json;
@@ -23,7 +24,7 @@ export const POST = async (req: Request) => {
       if (taskId) {
         try {
           const db = getDb();
-          await db.query('UPDATE works SET status=$1, updated_at=now() WHERE uid=$2', [-1, taskId]);
+          await db.query('UPDATE works SET status=$1, updated_at=now() WHERE task_id=$2', [-1, taskId]);
           console.log('Updated task status to failed for taskId:', taskId);
         } catch (dbError) {
           console.error('Failed to update task status to failed:', dbError);
@@ -43,7 +44,7 @@ export const POST = async (req: Request) => {
       if (taskId) {
         try {
           const db = getDb();
-          await db.query('UPDATE works SET status=$1, updated_at=now() WHERE uid=$2', [-1, taskId]);
+          await db.query('UPDATE works SET status=$1, updated_at=now() WHERE task_id=$2', [-1, taskId]);
           console.log('Updated task status to failed due to no result image URL for taskId:', taskId);
         } catch (dbError) {
           console.error('Failed to update task status to failed:', dbError);
@@ -70,7 +71,7 @@ export const POST = async (req: Request) => {
       if (taskId) {
         try {
           const db = getDb();
-          await db.query('UPDATE works SET status=$1, updated_at=now() WHERE uid=$2', [-1, taskId]);
+          await db.query('UPDATE works SET status=$1, updated_at=now() WHERE task_id=$2', [-1, taskId]);
           console.log('Updated task status to failed due to image fetch error for taskId:', taskId);
         } catch (dbError) {
           console.error('Failed to update task status to failed:', dbError);
@@ -95,7 +96,7 @@ export const POST = async (req: Request) => {
       if (taskId) {
         try {
           const db = getDb();
-          await db.query('UPDATE works SET status=$1, updated_at=now() WHERE uid=$2', [-1, taskId]);
+          await db.query('UPDATE works SET status=$1, updated_at=now() WHERE task_id=$2', [-1, taskId]);
           console.log('Updated task status to failed due to R2 upload error for taskId:', taskId);
         } catch (dbError) {
           console.error('Failed to update task status to failed:', dbError);
@@ -108,7 +109,7 @@ export const POST = async (req: Request) => {
     const finalImageUrl = `${storageURL}/${fileName}`;
 
     const db = getDb();
-    const results = await db.query('SELECT * FROM works WHERE uid=$1', [taskId]);
+    const results = await db.query('SELECT * FROM works WHERE task_id=$1', [taskId]);
     
     if (results.rows.length > 0) {
       const row = results.rows[0];
@@ -119,9 +120,12 @@ export const POST = async (req: Request) => {
 
       await db.query(
         'UPDATE works SET output_url=$1, status=$2, updated_at=now() WHERE uid=$3',
-        [JSON.stringify([finalImageUrl]), 1, taskId]
+        [JSON.stringify([finalImageUrl]), 1, row.uid]
       );
-      
+      if (process.env.NEXT_PUBLIC_CHECK_GOOGLE_LOGIN != "0") {
+        // 减少用户次数
+        await countDownUserTimes(row.user_id);
+      }
       console.log('Successfully processed KIE.AI callback for task:', taskId);
     } else {
       console.error('No work record found for taskId:', taskId);
@@ -136,7 +140,7 @@ export const POST = async (req: Request) => {
     if (taskId) {
       try {
         const db = getDb();
-        await db.query('UPDATE works SET status=$1, updated_at=now() WHERE uid=$2', [-1, taskId]);
+        await db.query('UPDATE works SET status=$1, updated_at=now() WHERE task_id=$2', [-1, taskId]);
         console.log('Updated task status to failed due to unexpected error for taskId:', taskId);
       } catch (fallbackError) {
         console.error('Failed to update status in fallback error handler:', fallbackError);
