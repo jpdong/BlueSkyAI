@@ -36,9 +36,12 @@ const ConverterSection = () => {
     setCurrentTaskId(null);
   }, []);
 
-  const { isConnecting, connectionError } = useSSETaskStatus(currentTaskId, {
+  const { isConnecting, connectionError, isPolling, pollingAttempts } = useSSETaskStatus(currentTaskId, {
     onComplete: handleTaskComplete,
     onError: handleTaskError,
+    fallbackPollingDelay: 15 * 1000, // 15秒后开始轮询
+    pollingInterval: 30 * 1000, // 轮询间隔
+    maxPollingAttempts: 5, // 最多轮询5次
   });
 
   const handleFileUpload = async (file: File) => {
@@ -268,14 +271,19 @@ const ConverterSection = () => {
                   <div className="animate-spin w-12 h-12 border-4 border-purple-600 border-t-transparent rounded-full mx-auto"></div>
                   <h3 className="text-xl font-bold text-white">AI正在处理您的图片...</h3>
                   <p className="text-gray-400">这可能需要几分钟时间</p>
-                  {isConnecting && (
-                    <p className="text-sm text-gray-500">建立连接中...</p>
+                  {isConnecting && !isPolling && (
+                    <p className="text-sm text-gray-500">建立实时连接中...</p>
                   )}
-                  {connectionError && (
+                  {connectionError && !isPolling && (
                     <p className="text-sm text-red-400">连接状态: {connectionError}</p>
                   )}
-                  {currentTaskId && !isConnecting && !connectionError && (
+                  {currentTaskId && !isConnecting && !connectionError && !isPolling && (
                     <p className="text-sm text-green-400">实时监听任务状态中...</p>
+                  )}
+                  {isPolling && (
+                    <p className="text-sm text-yellow-400">
+                      实时连接异常，使用轮询模式... ({pollingAttempts}/5)
+                    </p>
                   )}
                 </div>
               ) : (
