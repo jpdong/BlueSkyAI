@@ -180,12 +180,12 @@ const ConverterSection = () => {
   return (
     <section id="converter" className="relative py-20">
       <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-purple-900/20"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-black/80 to-purple-900/20"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA Style Converter</span>
+            <span className="bg-linear-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA Style Converter</span>
           </h2>
           <p className="text-xl text-gray-300">Upload your photo and transform it into GTA-style artwork</p>
         </div>
@@ -256,7 +256,7 @@ const ConverterSection = () => {
             <button 
               onClick={handleConvert}
               disabled={!uploadedImage || isConverting}
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed py-4 rounded-full font-semibold text-lg transition-all"
+              className="w-full bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed py-4 rounded-full font-semibold text-lg transition-all"
             >
               {isConverting ? '转换中...' : '开始转换'}
             </button>

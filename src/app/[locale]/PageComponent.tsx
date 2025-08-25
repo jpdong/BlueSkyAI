@@ -247,7 +247,7 @@ const PageComponent = ({
 
             <div className={"max-w-7xl px-9 mx-auto"}>
               <div
-                className={"mx-auto rounded-tl-[30px] rounded-tr-[30px] border-[12px] border-[#ffffff1f] object-fill"}>
+                className={"mx-auto rounded-tl-[30px] rounded-tr-[30px] border-12 border-[#ffffff1f] object-fill"}>
                 <form onSubmit={handleSubmit} className="relative shadow-lg">
                   <div
                     className="overflow-hidden rounded-tl-[20px] rounded-tr-[20px]">
@@ -294,7 +294,7 @@ const PageComponent = ({
                                 onChange={checkSubscribe}
                                 className={classNames(
                                   isPublic ? 'bg-[#f05011]' : 'bg-gray-200',
-                                  'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out'
+                                  'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out'
                                 )}
                               >
                                 <span className="sr-only">Use setting</span>
@@ -302,7 +302,7 @@ const PageComponent = ({
                                   aria-hidden="true"
                                   className={classNames(
                                     isPublic ? 'translate-x-5' : 'translate-x-0',
-                                    'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
+                                    'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-sm ring-0 transition duration-200 ease-in-out'
                                   )}
                                 />
                               </Switch>
@@ -320,7 +320,7 @@ const PageComponent = ({
                       <div className="pt-2 w-1/4">
                         <button
                           type="submit"
-                          className="w-full inline-flex justify-center items-center rounded-md bg-[#ffa11b] px-3 py-2 text-xs md:text-lg font-semibold text-white shadow-sm hover:bg-[#f05011]"
+                          className="w-full inline-flex justify-center items-center rounded-md bg-[#ffa11b] px-3 py-2 text-xs md:text-lg font-semibold text-white shadow-xs hover:bg-[#f05011]"
                         >
                           {commonText.buttonText}
                         </button>

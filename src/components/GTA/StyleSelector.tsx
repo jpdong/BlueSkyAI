@@ -20,7 +20,7 @@ const StyleSelector: React.FC<StyleSelectorProps> = ({ selectedStyle, onStyleCha
               : 'border-gray-600 bg-gray-900/50 hover:border-gray-500'
           }`}
         >
-          <div className="w-full h-24 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg mb-3"></div>
+          <div className="w-full h-24 bg-linear-to-br from-orange-500 to-red-600 rounded-lg mb-3"></div>
           <h4 className="font-semibold text-white mb-1">Original Art</h4>
           <p className="text-sm text-gray-400 mb-3">Classic GTA original art style</p>
           <div className="flex space-x-1">
@@ -38,7 +38,7 @@ const StyleSelector: React.FC<StyleSelectorProps> = ({ selectedStyle, onStyleCha
               : 'border-gray-600 bg-gray-900/50 hover:border-gray-500'
           }`}
         >
-          <div className="w-full h-24 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-lg mb-3"></div>
+          <div className="w-full h-24 bg-linear-to-br from-cyan-500 to-purple-600 rounded-lg mb-3"></div>
           <h4 className="font-semibold text-white mb-1">Neon Style</h4>
           <p className="text-sm text-gray-400 mb-3">Vibrant neon-lit Miami aesthetic</p>
           <div className="flex space-x-1">

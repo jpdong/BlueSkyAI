@@ -6,7 +6,7 @@ const GallerySection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA Art Gallery</span>
+            <span className="bg-linear-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA Art Gallery</span>
           </h2>
           <p className="text-xl text-gray-300 mb-8">Explore stunning GTA style artworks created by AI, each one is a unique artistic expression</p>
           
@@ -23,14 +23,14 @@ const GallerySection = () => {
         
         {/* Featured Gallery Item */}
         <div className="relative bg-gray-900/50 border border-gray-600 rounded-2xl overflow-hidden">
-          <div className="aspect-video bg-gradient-to-br from-pink-600 via-purple-600 to-cyan-600 relative">
+          <div className="aspect-video bg-linear-to-br from-pink-600 via-purple-600 to-cyan-600 relative">
             <div className="absolute inset-0 bg-black/30"></div>
           </div>
           
           <div className="absolute inset-0 flex items-end">
             <div className="p-8 text-white">
               <h3 className="text-3xl font-bold mb-2">
-                <span className="bg-gradient-to-r from-pink-400 to-cyan-400 text-transparent bg-clip-text">Welcome to Vice City</span>
+                <span className="bg-linear-to-r from-pink-400 to-cyan-400 text-transparent bg-clip-text">Welcome to Vice City</span>
               </h3>
               <h2 className="text-4xl font-bold text-white mb-4">The Neon Paradise</h2>
               <p className="text-gray-200 max-w-2xl mb-6">
@@ -39,11 +39,11 @@ const GallerySection = () => {
               </p>
               
               <div className="flex space-x-4 mb-6">
-                <button className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/30">
+                <button className="flex items-center space-x-2 bg-white/20 backdrop-blur-xs px-4 py-2 rounded-lg hover:bg-white/30">
                   <div className="w-4 h-4 bg-white/80 rounded"></div>
                   <span>View Gallery</span>
                 </button>
-                <button className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/30">
+                <button className="flex items-center space-x-2 bg-white/20 backdrop-blur-xs px-4 py-2 rounded-lg hover:bg-white/30">
                   <div className="w-4 h-4 bg-white/80 rounded"></div>
                   <span>Download</span>
                 </button>
@@ -53,7 +53,7 @@ const GallerySection = () => {
           
           {/* Gallery Navigation */}
           <div className="absolute right-4 bottom-4 flex items-center space-x-2">
-            <button className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+            <button className="w-10 h-10 bg-white/20 backdrop-blur-xs rounded-full flex items-center justify-center">
               <div className="w-4 h-2 bg-white/80 rounded"></div>
             </button>
             <div className="flex space-x-1">
@@ -61,13 +61,13 @@ const GallerySection = () => {
                 <button key={i} className={`w-2 h-2 rounded-full ${i === 1 ? 'bg-white' : 'bg-white/40'}`}></button>
               ))}
             </div>
-            <button className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+            <button className="w-10 h-10 bg-white/20 backdrop-blur-xs rounded-full flex items-center justify-center">
               <div className="w-4 h-2 bg-white/80 rounded"></div>
             </button>
           </div>
           
           {/* Share Button */}
-          <button className="absolute top-4 right-4 flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-3 py-2 rounded-lg">
+          <button className="absolute top-4 right-4 flex items-center space-x-2 bg-white/20 backdrop-blur-xs px-3 py-2 rounded-lg">
             <div className="w-4 h-4 bg-white/80 rounded"></div>
             <span>Share</span>
           </button>

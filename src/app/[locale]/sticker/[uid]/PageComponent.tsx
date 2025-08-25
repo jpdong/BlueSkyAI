@@ -157,7 +157,7 @@ const PageComponent = ({
                               <button
                                 type="submit"
                                 onClick={() => downloadResult(workDetail?.output_url[0], 0)}
-                                className="w-full inline-flex justify-center items-center rounded-md bg-[#ffa11b] px-3 py-2 text-xs md:text-lg font-semibold text-white shadow-sm hover:bg-[#f05011]"
+                                className="w-full inline-flex justify-center items-center rounded-md bg-[#ffa11b] px-3 py-2 text-xs md:text-lg font-semibold text-white shadow-xs hover:bg-[#f05011]"
                               >
                                 {commonText.download}
                               </button>
@@ -194,7 +194,7 @@ const PageComponent = ({
                               <button
                                 type="submit"
                                 onClick={() => downloadResult(workDetail?.output_url[1], 1)}
-                                className="w-full inline-flex justify-center items-center rounded-md bg-[#ffa11b] px-3 py-2 text-xs md:text-lg font-semibold text-white shadow-sm hover:bg-[#f05011]"
+                                className="w-full inline-flex justify-center items-center rounded-md bg-[#ffa11b] px-3 py-2 text-xs md:text-lg font-semibold text-white shadow-xs hover:bg-[#f05011]"
                               >
                                 {commonText.download} PNG
                               </button>

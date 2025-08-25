@@ -6,17 +6,17 @@ import { AuroraText } from "../magicui/aurora-text";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center">
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-black to-pink-900/50"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-purple-900/50 via-black to-pink-900/50"></div>
       <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-20"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
-          <div className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text font-semibold text-sm mb-4">
+          <div className="inline-block bg-linear-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text font-semibold text-sm mb-4">
             New Era of AI Style Transfer
           </div>
           
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            {/* <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA AI</span> */}
+            {/* <span className="bg-linear-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">GTA AI</span> */}
           <AuroraText>GTA AI </AuroraText>
             <br />
             <span className="text-white">Art Generator</span>
@@ -57,10 +57,10 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#converter" className="inline-block">
-              {/* <button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+              {/* <button className="bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
                 Start Converting
               </button> */}
-              <PulsatingButton className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"> Start Converting</PulsatingButton>
+              <PulsatingButton className="bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"> Start Converting</PulsatingButton>
             </a>
             <a href="#gallery" className="inline-block">
               <button className="border border-gray-600 hover:border-gray-400 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">

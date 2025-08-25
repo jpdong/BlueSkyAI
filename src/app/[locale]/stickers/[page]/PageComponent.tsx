@@ -116,7 +116,7 @@ const PageComponent = ({
           </div>
         </div>
         <div className={"flex justify-center items-center"}>
-          <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+          <nav className="isolate inline-flex -space-x-px rounded-md shadow-xs" aria-label="Pagination">
             {
               pageData?.pagination?.length > 0 ?
                 page == 2 ?
@@ -156,7 +156,7 @@ const PageComponent = ({
                       key={pa}
                       href={href}
                       aria-current="page"
-                      className="no-underline relative z-10 inline-flex items-center bg-[#de5c2d] px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="no-underline relative z-10 inline-flex items-center bg-[#de5c2d] px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       onClick={() => checkShowLoading(pa)}
                     >
                       {pa}

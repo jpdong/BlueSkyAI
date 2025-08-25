@@ -49,7 +49,7 @@ export default function Pricing({
   if (!priceList?.length)
     return (
       <div className={(isPricing ? "" : "background-div") + " flex flex-col items-center"}>
-        <div className="max-w-screen-lg grid place-items-center bg-slate-100 text-slate-600 p-4 gap-4">
+        <div className="max-w-(--breakpoint-lg) grid place-items-center bg-slate-100 text-slate-600 p-4 gap-4">
           <div id="introduction" className="bg-white shadow-md rounded border-slate-200 p-5">
             <div className="text-slate-800 space-y-2 mb-0">
             </div>
@@ -74,7 +74,7 @@ export default function Pricing({
                 </div>
                 <h2 className="mt-8 mb-6 text-3xl font-bold md:mb-8 md:text-5xl lg:mb-12">{pricingText.free0}</h2>
                 <div
-                  className="w-full bg-[#2b306b] px-6 py-4 text-center font-semibold text-[#2b306b] cursor-pointer inline-flex justify-center items-center text-sm leading-6 shadow-sm"
+                  className="w-full bg-[#2b306b] px-6 py-4 text-center font-semibold text-[#2b306b] cursor-pointer inline-flex justify-center items-center text-sm leading-6 shadow-xs"
                 >
                   {pricingText.buyText}
                 </div>
@@ -164,7 +164,7 @@ export default function Pricing({
                           className="mb-2 text-lg font-bold md:mb-3 md:text-xl lg:mb-4">{priceString} {pricingText.monthlyText}</h2>
                         <a
                           type="button"
-                          className="w-full rounded-full bg-[#f05011] px-6 py-4 text-center font-bold text-white cursor-pointer inline-flex justify-center items-center text-sm leading-6 shadow-sm"
+                          className="w-full rounded-full bg-[#f05011] px-6 py-4 text-center font-bold text-white cursor-pointer inline-flex justify-center items-center text-sm leading-6 shadow-xs"
                           onClick={() => handleCheckout(price)}
                         >
                           {pricingText.buyText}
@@ -256,7 +256,7 @@ export default function Pricing({
                           className="mb-2 text-lg font-bold md:mb-3 md:text-xl lg:mb-6">{priceString} {pricingText.annuallyText} {pricingText.annuallySaveText}</h2>
                         <a
                           type="button"
-                          className="w-full rounded-full bg-[#f05011] px-6 py-4 text-center font-bold text-white cursor-pointer inline-flex justify-center items-center text-sm leading-6 shadow-sm"
+                          className="w-full rounded-full bg-[#f05011] px-6 py-4 text-center font-bold text-white cursor-pointer inline-flex justify-center items-center text-sm leading-6 shadow-xs"
                           onClick={() => handleCheckout(price)}
                         >
                           {pricingText.buyText}

@@ -9,12 +9,12 @@ const PricingSection = () => {
   return (
     <section className="relative py-20">
       <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-purple-900/20"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-black/80 to-purple-900/20"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">Choose Your Plan</span>
+            <span className="bg-linear-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">Choose Your Plan</span>
           </h2>
           <p className="text-xl text-gray-300 mb-8">
             Choose the perfect credit package for your GTA style conversion needs and unlock unlimited creative possibilities
@@ -42,27 +42,27 @@ const PricingSection = () => {
             
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">10 credits per month (expires after 30 days)</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Access to basic AI models</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Standard definition output</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Limited style options</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Watermarked downloads</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Community support</span>
               </div>
             </div>
@@ -100,23 +100,23 @@ const PricingSection = () => {
             
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">100 credits per month (expires after 30 days)</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Access to basic AI models</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Standard definition output</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Email support</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">No watermark images</span>
               </div>
             </div>
@@ -135,7 +135,7 @@ const PricingSection = () => {
 
           {/* Pro Plan - Popular */}
           <div className="relative bg-gray-900/50 border-2 border-purple-500 rounded-2xl p-6">
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-linear-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
               Popular
             </div>
             <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
@@ -147,37 +147,37 @@ const PricingSection = () => {
               </div>
               <div className="text-gray-400">{isAnnualPlan ? '/year' : '/month'}</div>
             </div>
-            <button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-3 rounded-lg font-semibold mb-6">
+            <button className="w-full bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-3 rounded-lg font-semibold mb-6">
               Buy Now
             </button>
             
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">500 credits per month (expires after 30 days)</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Priority processing queue</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Batch image generation</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Advanced style presets</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Cloud image storage</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">API access</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Priority customer support</span>
               </div>
             </div>
@@ -200,31 +200,31 @@ const PricingSection = () => {
             
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">2000 credits per month (expires after 30 days)</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Priority processing queue</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Custom style training</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">High definition output</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Commercial licensing</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Priority customer support</span>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full mt-0.5 shrink-0"></div>
                 <span className="text-sm text-gray-300">Advanced style presets</span>
               </div>
             </div>

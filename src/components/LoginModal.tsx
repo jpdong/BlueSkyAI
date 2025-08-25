@@ -9,7 +9,7 @@ import {signInUseAuth} from "~/libs/nextAuthClient";
 import Image from "next/image";
 
 const style = {
-  loginGoogleBtn: 'inline-flex w-full justify-center items-center space-x-3 rounded-md  px-3 py-2 text-sm font-semibold shadow-sm hover:border-indigo-400 border-2  border-indigo-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+  loginGoogleBtn: 'inline-flex w-full justify-center items-center space-x-3 rounded-md  px-3 py-2 text-sm font-semibold shadow-xs hover:border-indigo-400 border-2  border-indigo-600  focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
 }
 
 const LoginModal = ({
@@ -87,7 +87,7 @@ const LoginModal = ({
                     ) : (
                       <button
                         type="button"
-                        className={"inline-flex w-full justify-center items-center space-x-3 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:border-indigo-400 border-2 border-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"}
+                        className={"inline-flex w-full justify-center items-center space-x-3 rounded-md px-3 py-2 text-sm font-semibold shadow-xs hover:border-indigo-400 border-2 border-indigo-600 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"}
                         onClick={async () => {
                           await signInUseAuth({
                             redirectPath: redirectPath

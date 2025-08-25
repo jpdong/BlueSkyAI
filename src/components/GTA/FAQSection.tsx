@@ -16,12 +16,12 @@ const FAQSection = () => {
   return (
     <section className="relative py-20">
       <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-purple-900/20"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-black/80 to-purple-900/20"></div>
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">FAQ</span>
+            <span className="bg-linear-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">FAQ</span>
           </h2>
           <p className="text-xl text-gray-300">Have another question? Contact us on Discord or by email</p>
         </div>
