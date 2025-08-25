@@ -105,6 +105,11 @@ export async function POST(req: Request) {
 
 async function generateImage(prompt: string, inputImageUrl: string): Promise<string> {
   const url = 'https://api.kie.ai/api/v1/flux/kontext/generate';
+
+  // 测试环境使用模拟API，生产环境使用真实API
+  /*const url = process.env.NODE_ENV === 'development' || process.env.USE_MOCK_KIE === 'true'
+    ? `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/mock/kie-generate`
+    : 'https://api.kie.ai/api/v1/flux/kontext/generate';*/
   
   // 构建回调URL - 使用完整的域名
   const callbackUrl = `${process.env.WEB_HOOK_URL}/api/generate/callByKie`;

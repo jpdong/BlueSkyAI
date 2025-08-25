@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { ChevronRightIcon, PhotoIcon } from '@heroicons/react/24/solid';
 import StyleSelector from './StyleSelector';
 import Image from 'next/image';
 import { useCommonContext } from '~/context/common-context';
+import { useSSETaskStatus } from '~/hooks/useSSETaskStatus';
 
 const ConverterSection = () => {
   const [selectedStyle, setSelectedStyle] = useState('original');
@@ -12,7 +13,7 @@ const ConverterSection = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [convertedImage, setConvertedImage] = useState<string | null>(null);
   const [isConverting, setIsConverting] = useState(false);
-  const [pollCount, setPollCount] = useState(0);
+  const [currentTaskId, setCurrentTaskId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const {
@@ -20,6 +21,25 @@ const ConverterSection = () => {
     setShowLoginModal,
     setShowPricingModal
   } = useCommonContext();
+
+  const handleTaskComplete = useCallback((data: any) => {
+    if (data?.outputUrls && data.outputUrls.length > 0) {
+      setConvertedImage(data.outputUrls[0]);
+    }
+    setIsConverting(false);
+    setCurrentTaskId(null);
+  }, []);
+
+  const handleTaskError = useCallback((error: string) => {
+    alert('图片生成失败: ' + error);
+    setIsConverting(false);
+    setCurrentTaskId(null);
+  }, []);
+
+  const { isConnecting, connectionError } = useSSETaskStatus(currentTaskId, {
+    onComplete: handleTaskComplete,
+    onError: handleTaskError,
+  });
 
   const handleFileUpload = async (file: File) => {
     setIsUploading(true);
@@ -108,9 +128,9 @@ const ConverterSection = () => {
       }
       
       if (result.uid) {
-        // 重置轮询计数并开始轮询任务状态
-        setPollCount(0);
-        pollTaskStatus(result.uid);
+        // 使用SSE监听任务状态
+        console.log("dong setCurrentTaskId",result.uid);
+        setCurrentTaskId(result.uid);
       } else {
         throw new Error(result.msg || 'Generation failed');
       }
@@ -122,60 +142,6 @@ const ConverterSection = () => {
     }
   };
 
-  const pollTaskStatus = async (uid: string) => {
-    const startTime = Date.now();
-    const timeout = 5 * 60 * 1000; // 5分钟超时
-    let pollCount = 0;
-    const maxPolls = 100; // 最大轮询次数，防止无限轮询
-    
-    const checkStatus = async () => {
-      try {
-        const elapsed = Date.now() - startTime;
-        pollCount++;
-        
-        // 更新轮询计数显示
-        setPollCount(pollCount);
-        
-        // 检查超时或达到最大轮询次数
-        if (elapsed > timeout || pollCount > maxPolls) {
-          console.warn(`Polling timeout reached for task ${uid}. Elapsed: ${elapsed}ms, Polls: ${pollCount}`);
-          alert('图片生成超时，请重试或联系客服');
-          setIsConverting(false);
-          setPollCount(0);
-          return;
-        }
-        
-        const response = await fetch(`/api/generate/status?uid=${uid}`);
-        const result = await response.json();
-        
-        if (result.status === 1) {
-          // 完成
-          const outputUrls = JSON.parse(result.outputUrl || '[]');
-          if (outputUrls.length > 0) {
-            setConvertedImage(outputUrls[0]);
-          }
-          setIsConverting(false);
-          setPollCount(0);
-        } else if (result.status === -1) {
-          // 失败
-          alert('图片生成失败');
-          setIsConverting(false);
-          setPollCount(0);
-        } else {
-          // 继续轮询，动态调整轮询间隔
-          const interval = pollCount < 10 ? 10000 : pollCount < 30 ? 20000 : 60000;
-          setTimeout(checkStatus, interval);
-        }
-      } catch (error) {
-        console.error('Status check error:', error);
-        alert('检查状态失败，请重试');
-        setIsConverting(false);
-        setPollCount(0);
-      }
-    };
-    
-    checkStatus();
-  };
 
   return (
     <section id="converter" className="relative py-20">
@@ -302,8 +268,14 @@ const ConverterSection = () => {
                   <div className="animate-spin w-12 h-12 border-4 border-purple-600 border-t-transparent rounded-full mx-auto"></div>
                   <h3 className="text-xl font-bold text-white">AI正在处理您的图片...</h3>
                   <p className="text-gray-400">这可能需要几分钟时间</p>
-                  {pollCount > 0 && (
-                    <p className="text-sm text-gray-500">检查状态中... ({pollCount}次)</p>
+                  {isConnecting && (
+                    <p className="text-sm text-gray-500">建立连接中...</p>
+                  )}
+                  {connectionError && (
+                    <p className="text-sm text-red-400">连接状态: {connectionError}</p>
+                  )}
+                  {currentTaskId && !isConnecting && !connectionError && (
+                    <p className="text-sm text-green-400">实时监听任务状态中...</p>
                   )}
                 </div>
               ) : (

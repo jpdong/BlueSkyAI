@@ -3,6 +3,7 @@ import { getDb } from "~/libs/db";
 import { countSticker } from "~/servers/keyValue";
 import { v4 as uuidv4 } from 'uuid';
 import {countDownUserTimes} from "~/servers/manageUserTimes";
+import { publishTaskUpdate } from '~/libs/redis';
 
 export const POST = async (req: Request) => {
   let json;
@@ -24,7 +25,17 @@ export const POST = async (req: Request) => {
       if (taskId) {
         try {
           const db = getDb();
+          const taskResult = await db.query('SELECT uid FROM works WHERE task_id=$1', [taskId]);
           await db.query('UPDATE works SET status=$1, updated_at=now() WHERE task_id=$2', [-1, taskId]);
+          
+          // 通过Redis发布失败状态更新
+          if (taskResult.rows.length > 0) {
+            const uid = taskResult.rows[0].uid;
+            await publishTaskUpdate(uid, -1, {
+              error: msg || 'Generation failed',
+            });
+          }
+          
           console.log('Updated task status to failed for taskId:', taskId);
         } catch (dbError) {
           console.error('Failed to update task status to failed:', dbError);
@@ -56,6 +67,7 @@ export const POST = async (req: Request) => {
 
     let imageContent;
     try {
+      console.log("dong call by kie resultImageUrl:",resultImageUrl);
       imageContent = await fetch(resultImageUrl)
         .then((response) => {
           if (!response.ok) {
@@ -107,6 +119,7 @@ export const POST = async (req: Request) => {
     }
 
     const finalImageUrl = `${storageURL}/${fileName}`;
+    //const finalImageUrl = originImageUrl;
 
     const db = getDb();
     const results = await db.query('SELECT * FROM works WHERE task_id=$1', [taskId]);
@@ -126,6 +139,12 @@ export const POST = async (req: Request) => {
         // 减少用户次数
         await countDownUserTimes(row.user_id);
       }
+      
+      // 通过Redis发布成功状态更新
+      await publishTaskUpdate(row.uid, 1, {
+        outputUrls: [finalImageUrl],
+      });
+      
       console.log('Successfully processed KIE.AI callback for task:', taskId);
     } else {
       console.error('No work record found for taskId:', taskId);

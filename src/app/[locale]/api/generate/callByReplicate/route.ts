@@ -2,12 +2,14 @@ import {R2, r2Bucket, storageURL} from "~/libs/R2";
 import {getDb} from "~/libs/db";
 import {countSticker} from "~/servers/keyValue";
 import {v4 as uuidv4} from 'uuid';
+import { publishTaskUpdate } from '~/libs/redis';
 
 export const POST = async (req: Request) => {
-  const query = new URL(req.url).searchParams;
-  const uid = query.get("uid")!;
+  try {
+    const query = new URL(req.url).searchParams;
+    const uid = query.get("uid")!;
 
-  const json = await req.json();
+    const json = await req.json();
 
   const output = json.output;
   console.log('callByReplicate ==>json.output==>', output);
@@ -44,7 +46,17 @@ export const POST = async (req: Request) => {
       await countSticker('countSticker', 1);
     }
     await db.query('update works set output_url=$1,status=$2,updated_at=now() where uid=$3', [output_url, 1, uid]);
+    
+    // 通过Redis发布状态更新
+    await publishTaskUpdate(uid, 1, {
+      outputUrls: output_urls,
+    });
   }
 
-  return Response.json({msg: 200});
+    return Response.json({msg: 200});
+    
+  } catch (error) {
+    console.error('Replicate callback error:', error);
+    return Response.json({ error: 'Internal server error' }, { status: 500 });
+  }
 }
